@@ -270,3 +270,21 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+
+document.getElementById("rut").addEventListener("input", function (e) {
+    let valor = e.target.value.replace(/[^0-9kK]/g, '').toUpperCase(); // solo números y K
+    if (valor.length > 1) {
+        let cuerpo = valor.slice(0, -1);
+        let dv = valor.slice(-1);
+
+        // Formatear con puntos cada 3 dígitos desde el final
+        cuerpo = cuerpo.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+
+        e.target.value = `${cuerpo}-${dv}`;
+    } else {
+        e.target.value = valor;
+    }
+});
+
+
