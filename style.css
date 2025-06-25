@@ -1,0 +1,461 @@
+/* RESET Y BASES */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #363636;
+    padding-top: 50px;
+    /* espacio para navbar fijo */
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* NAVBAR */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #222;
+    padding: 10px 20px;
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+.navbar .logo {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.navbar .nav-links {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.navbar a {
+    color: white;
+}
+
+.navbar input[type="text"] {
+    padding: 5px;
+    border-radius: 4px;
+    border: none;
+}
+
+.navbar button {
+    padding: 5px 10px;
+    background-color: #04AA6D;
+    border: none;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.navbar button:hover {
+    background-color: #038f5a;
+}
+
+/* SLIDER */
+.slider {
+    max-width: 100%;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    height: 500px;
+    margin: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.producto {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.producto.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.imagen-fondo {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.25;
+    z-index: 1;
+    image-rendering: auto;
+}
+
+.producto .contenido {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    padding: 20px;
+    text-align: center;
+}
+
+.producto .nombre {
+    font-weight: bold;
+    font-size: 22px;
+    margin-top: 340px;
+    color: #ffffff;
+}
+
+.producto .precio {
+    font-size: 20px;
+    color: #ffffff;
+    margin: 0 auto;
+}
+
+.producto button {
+    width: 100%;
+    padding: 5px;
+    background-color: #04AA6D;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: auto;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.producto button:hover {
+    background-color: #038f5a;
+}
+
+/* OFERTAS */
+.ofertas {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.oferta {
+    background-color: #fff;
+    border-radius: 8px;
+    text-align: center;
+    padding: 15px;
+    height: 360px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    flex: 1 1 22%;
+}
+
+.oferta h3 {
+    font-size: 18px;
+    margin: 40px 0 5px;
+    color: #222;
+}
+
+.oferta p {
+    margin: 5px 0 10px;
+    color: #555;
+}
+
+.oferta a {
+    margin-top: auto;
+    display: inline-block;
+    padding: 8px 14px;
+    background-color: #04AA6D;
+    color: white;
+    border-radius: 4px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.oferta a:hover {
+    background-color: #038f5a;
+}
+
+/* IMAGEN PRODUCTO (hover efecto) */
+.imagen-producto {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    margin-bottom: 15px;
+}
+
+.imagen-producto img {
+    position: absolute;
+    width: 100%;
+    height: 110%;
+    object-fit: contain;
+    top: 0;
+    left: 0;
+    transition: opacity 0.3s ease;
+}
+
+.imagen-producto img.default {
+    opacity: 1;
+    z-index: 1;
+}
+
+.imagen-producto img.hover {
+    opacity: 0;
+    z-index: 2;
+}
+
+.oferta:hover .imagen-producto img.hover {
+    opacity: 1;
+}
+
+.oferta:hover .imagen-producto img.default {
+    opacity: 0;
+}
+
+/* CARRITO */
+.carrito button,
+.carrito-popup button {
+    background-color: #04AA6D;
+    color: white;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    margin: 5px 0 5px 5px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    ;
+}
+
+.carrito button:hover,
+.carrito-popup button:hover {
+    background-color: #038f5a;
+    transform: scale(1.05);
+}
+
+.carrito-popup {
+    position: fixed;
+    top: 60px;
+    right: 20px;
+    width: 380px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    z-index: 9999;
+    padding: 20px;
+    display: none;
+}
+
+.carrito-popup.visible {
+    display: block;
+}
+
+.carrito-popup table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 10px;
+}
+
+.carrito-popup th,
+.carrito-popup td {
+    padding: 6px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.carrito-popup .eliminar {
+    background-color: #e74c3c;
+    padding: 4px 8px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.carrito-popup .eliminar:hover {
+    background-color: #c0392b;
+}
+
+/* DROPDOWN */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #222;
+    border-radius: 8px;
+    min-width: 180px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    flex-direction: column;
+    padding: 10px 0;
+}
+
+.dropdown-content a {
+    color: white;
+    padding: 10px 16px;
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.3s ease;
+}
+
+.dropdown-content a:hover {
+    background-color: #04AA6D;
+}
+
+/* ANIMACIÓN ARMA */
+.arma {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.arma img {
+    border-radius: 20px;
+    transition: transform 0.5s ease;
+}
+
+.arma:hover img {
+    transform: scale(1.05);
+}
+
+/* FOOTER */
+.footer-info {
+    background-color: #111;
+    color: #fff;
+    padding: 40px 20px 10px;
+    font-size: 15px;
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 30px;
+}
+
+.footer-col {
+    flex: 1 1 200px;
+    min-width: 200px;
+}
+
+.footer-col h4 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    color: #04AA6D;
+}
+
+.footer-col ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-col ul li a,
+.footer-col p,
+.footer-col a {
+    color: #ccc;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-col ul li a:hover,
+.footer-col a:hover {
+    color: #04AA6D;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding: 10px 0;
+    border-top: 1px solid #333;
+    margin-top: 20px;
+    font-size: 14px;
+    color: #888;
+}
+
+/* BOTÓN ELIMINAR */
+.btn-eliminar {
+    all: unset;
+    font-size: 14px;
+    color: red;
+    cursor: pointer;
+    line-height: 1;
+    display: inline-block;
+    margin-left: 6px;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.btn-eliminar:hover {
+    color: darkred;
+    transform: scale(1.2);
+}
+
+/* MEDIA QUERIES */
+@media (max-width: 900px) {
+    .contenedor-principal {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    form,
+    .productos {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        position: static;
+        /* o relative */
+        padding-top: 10px;
+        /* opcional */
+    }
+
+    body {
+        padding-top: 0;
+        /* Quita padding si navbar no es fija */
+    }
+
+    .navbar .nav-links {
+        flex-direction: column;
+        width: 100%;
+        gap: 10px;
+    }
+
+    .navbar input[type="text"],
+    .navbar button {
+        width: 100%;
+    }
+}
